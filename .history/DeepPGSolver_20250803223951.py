@@ -722,7 +722,7 @@ class deepPG(nn.Module):  # Solver for deep potential game
                 plt.plot(traj[:,i,:])
 
 
-            # Remove trailing singleton dimension: shape → (T, D)
+            # Remove trailing singleton dimension: shape → (T, 4)
             data = traj.squeeze(-1)
             T = len(traj)
             time = np.linspace(0,1,T)
@@ -798,7 +798,7 @@ class deepPG(nn.Module):  # Solver for deep potential game
                                         'x', markersize=8, color="red")
             lines, points = [], []
 
-            for i in range(self.D):
+            for i in range(4):
                 line, = ax.plot([], [], color=colors[i], lw=2, label=f"Player {i+1}")
                 point, = ax.plot([], [], 'o', color=colors[i])
                 lines.append(line)

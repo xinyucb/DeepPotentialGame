@@ -722,7 +722,7 @@ class deepPG(nn.Module):  # Solver for deep potential game
                 plt.plot(traj[:,i,:])
 
 
-            # Remove trailing singleton dimension: shape → (T, D)
+            # Remove trailing singleton dimension: shape → (T, 4)
             data = traj.squeeze(-1)
             T = len(traj)
             time = np.linspace(0,1,T)
@@ -743,14 +743,14 @@ class deepPG(nn.Module):  # Solver for deep potential game
             ax.set_ylabel("Position")
             ax.legend()
             # ax.set_title("1D Player Trajectories Over Time")
-            fixed_points = self.terminal.view(self.D).detach().numpy()
+            fixed_points = self.terminal.view(4).detach().numpy()
 
             for i in range(self.D):
                 fixed_scatter = ax.plot(1, fixed_points[i], 
                                         'x', markersize=8, color="red")
             lines, points = [], []
 
-            for i in range(self.D):
+            for i in range(4):
                 line, = ax.plot([], [], color=colors[i], lw=2, label=f"Player {i+1}")
                 point, = ax.plot([], [], 'o', color=colors[i])
                 lines.append(line)
@@ -791,14 +791,14 @@ class deepPG(nn.Module):  # Solver for deep potential game
             # colors = ['gray', 'seagreen', 'mediumslateblue', 'chocolate']
             colors= ["red", "green", "blue", "orange"]
             # After fig, ax setup
-            fixed_points = self.terminal.view(self.D, self.state_dim).detach().numpy()
+            fixed_points = self.terminal.view(4,2).detach().numpy()
 
             for i in range(self.D):
                 fixed_scatter = ax.plot(fixed_points[i, 0], fixed_points[i, 1],
                                         'x', markersize=8, color="red")
             lines, points = [], []
 
-            for i in range(self.D):
+            for i in range(4):
                 line, = ax.plot([], [], color=colors[i], lw=2, label=f"Player {i+1}")
                 point, = ax.plot([], [], 'o', color=colors[i])
                 lines.append(line)
@@ -822,7 +822,7 @@ class deepPG(nn.Module):  # Solver for deep potential game
                 return lines + points + fixed_scatter + [legend] 
 
             def update(frame):
-                for i in range(self.D):
+                for i in range(4):
                     traj = trajectories[:frame+1, i]
                     lines[i].set_data(traj[:, 0], traj[:, 1])
                     points[i].set_data(traj[-1, 0], traj[-1, 1])
