@@ -4,8 +4,6 @@ A Python implementation of deep learning-based solvers for potential games, spec
 
 Paper:  Xin Guo, Xinyu Li, Yufei Zhang, Distributed Games with Jumps: an α-Potential Game Approach, 2025.
 
-## Contact
-
 For questions and support, please contact xinyu_li@berkeley.edu. 
 
 ## Overview
