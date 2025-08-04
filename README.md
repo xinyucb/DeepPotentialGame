@@ -1,6 +1,11 @@
 # Deep Potential Game Solver
 
 A Python implementation of deep learning-based solvers for potential games, specifically designed for multi-agent systems including flocking and aversion games.
+Paper:  Xin Guo, Xinyu Li, Yufei Zhang, Distributed Games with Jumps: an α-Potential Game Approach, 2025.
+
+## Contact
+
+For questions and support, please contact xinyu_li@berkeley.edu. 
 
 ## Overview
 
@@ -195,11 +200,3 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ```
 
 
-
-## Citation
-
-Xin Guo, Xinyu Li, Yufei Zhang, Distributed Games with Jumps: an α-Potential Game Approach, 2025.
-
-## Contact
-
-For questions and support, please contact xinyu_li@berkeley.edu. 
